@@ -12,6 +12,15 @@ describe("default settings", function() {
       expect(thermostat.temperature).toEqual (20);
     });
 
+    it("should set min temperature of 10C", function() {
+      expect(thermostat.mintemp).toEqual (10);
+    });
+
+    it('cannot go below 10C', function() {
+      thermostat.temperature = 10;
+      expect(function(){ thermostat.down(); }).toThrowError("temperature cannot go below 10C");
+    });
+
   });
 
 describe("functions", function() {
@@ -21,6 +30,11 @@ describe("functions", function() {
       expect(thermostat.temperature).toEqual (21);
     });
 
+    it("can decrease temp with down button", function() {
+      thermostat.down();
+      expect(thermostat.temperature).toEqual (19);
+    });
+
   });
-  
+
 });
