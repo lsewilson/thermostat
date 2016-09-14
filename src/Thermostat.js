@@ -8,7 +8,7 @@ Thermostat.prototype.up = function() {
 };
 
 Thermostat.prototype.down = function () {
-  if (this.temperature == 10)
+  if (this.temperature == this.mintemp)
   {throw new Error('temperature cannot go below 10C');
 }
   this.temperature -= 1;
