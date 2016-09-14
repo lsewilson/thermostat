@@ -33,9 +33,7 @@ describe("power save mode", function() {
       thermostat.temperature = 32;
       expect(function(){ thermostat.up(); }).toThrowError("temperature cannot go above 32C");
     });
-
   });
-
 });
 
 describe("functions", function() {
@@ -50,6 +48,34 @@ describe("functions", function() {
       expect(thermostat.temperature).toEqual (19);
     });
 
+    it("resets temperature to 20C", function() {
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual (20);
+    });
   });
 
+  describe("energy usage levels", function() {
+
+    it('shows low energy usage if temperature less than 18C', function(){
+      for (var i=0; i<3; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.energyusage()).toEqual('low-usage');
+    });
+
+    it('shows mid energy usage if temperature between 18C and 25C', function(){
+      expect(thermostat.energyusage()).toEqual('medium-usage');
+
+
+    });
+
+    it('shows high energy usage if temperature above 25C', function(){
+      thermostat.powersavemode = false;
+      for (var i=0; i<6; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.energyusage()).toEqual('high-usage');
+    });
+
+  });
 });
