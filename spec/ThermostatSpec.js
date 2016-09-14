@@ -21,7 +21,22 @@ describe("default settings", function() {
       expect(function(){ thermostat.down(); }).toThrowError("temperature cannot go below 10C");
     });
 
+describe("power save mode", function() {
+
+    it("if on, max temp is 25C", function() {
+      thermostat.temperature = 25;
+      expect(function(){ thermostat.up(); }).toThrowError("temperature cannot go above 25C");
+    });
+
+    it("if off, max temp is 32C", function() {
+      thermostat.powersavemode = false;
+      thermostat.temperature = 32;
+      expect(function(){ thermostat.up(); }).toThrowError("temperature cannot go above 32C");
+    });
+
   });
+
+});
 
 describe("functions", function() {
 
