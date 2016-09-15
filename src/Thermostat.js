@@ -23,6 +23,9 @@ Thermostat.prototype.down = function () {
 
 Thermostat.prototype.powerSaveSwitch = function () {
   this.powersavemode = !this.powersavemode;
+  if(this.powersavemode === true) {
+    this.temperature = this.maxtemp[true];
+  }
 };
 
 Thermostat.prototype.reset = function () {

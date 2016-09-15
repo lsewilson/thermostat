@@ -5,28 +5,8 @@
     <title>Thermostat</title>
     <script src="src/Thermostat.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>
-      $(document).ready(function(){
-        var thermostat = new Thermostat();
+    <script src="src/interface.js"></script>
 
-        $("#temperature").text(thermostat.temperature);
-        $("#temperature-up").click(function() {
-          thermostat.up();
-        $('#temperature').text(thermostat.temperature);
-        })
-        $("#temperature-down").click(function() {
-          thermostat.down();
-        $('#temperature').text(thermostat.temperature);
-        })
-        $("#temperature-reset").click(function() {
-          thermostat.reset();
-        $('#temperature').text(thermostat.temperature);
-        })
-        $("#powersave-switch").click(function() {
-          thermostat.powerSaveSwitch();
-        })
-      });
-  </script>
   </head>
 
   <body>
@@ -39,7 +19,7 @@
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
         <button id="temperature-reset">reset</button>
-        power saving mode is <span id="power-saving-status">on</span>
+        power saving mode is <span id="power-saving-status"></span>
         <button id="powersave-switch">Switch</button>
       </p>
 
