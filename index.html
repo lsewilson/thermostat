@@ -10,15 +10,21 @@
         var thermostat = new Thermostat();
 
         $("#temperature").text(thermostat.temperature);
-
-
-
-        //     $("#temperature-up").click(Thermostat.up)
-        //   <!-- function(){
-        //     $("#temperature").();
-        // }); -->
-
-
+        $("#temperature-up").click(function() {
+          thermostat.up();
+        $('#temperature').text(thermostat.temperature);
+        })
+        $("#temperature-down").click(function() {
+          thermostat.down();
+        $('#temperature').text(thermostat.temperature);
+        })
+        $("#temperature-reset").click(function() {
+          thermostat.reset();
+        $('#temperature').text(thermostat.temperature);
+        })
+        $("#powersave-switch").click(function() {
+          thermostat.powerSaveSwitch();
+        })
       });
   </script>
   </head>
