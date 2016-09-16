@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
 
+
   function postData(){
     $.post('http://localhost:9292/thermostat', {
       temperature: thermostat.temperature,
@@ -8,23 +9,34 @@ $(document).ready(function(){
     });
   }
 
-  updateTemperature();
+  function getData() {
+    $.get('http://localhost:9292/thermostat', function(data){
+      var APIdata = data;
+      thermostat.temperature = data.temperature;
+      thermostat.powersavemode = data.power_saving_mode;
+      updateTemperature();
+    });
+  }
+
+
+  getData();
+
   $("#power-saving-status").text(thermostat.powersavemode);
 
   $("#temperature-up").click(function() {
     thermostat.up();
     updateTemperature();
-});
+  });
 
   $("#temperature-down").click(function() {
     thermostat.down();
     updateTemperature();
-});
+  });
 
   $("#temperature-reset").click(function() {
     thermostat.reset();
     updateTemperature();
-});
+  });
 
   $("#powersave-switch").click(function() {
     thermostat.powerSaveSwitch();
